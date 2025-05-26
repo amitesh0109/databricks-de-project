@@ -1,2 +1,2 @@
-# databricks-de-project
-Databricks-based data engineering project focused on building automated pipelines for earthquake data ingestion and processing
+# Earthquake Data Pipeline - Databricks Implementation
+A comprehensive Databricks project demonstrating the development of a scalable data pipeline to collect, process, and analyze earthquake data.
