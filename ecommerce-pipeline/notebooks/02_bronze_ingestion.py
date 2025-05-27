@@ -13,9 +13,9 @@ print("Starting Bronze Layer...")
 
 # Setup paths and database
 CONFIG = {
-    'source_path': '/tmp/ecommerce_data/raw/',
-    'bronze_path': '/tmp/ecommerce_data/bronze/',
-    'checkpoint_path': '/tmp/ecommerce_data/checkpoints/'
+    'source_path': '/dbfs/ecommerce_data/raw/',
+    'bronze_path': '/dbfs/ecommerce_data/bronze/',
+    'checkpoint_path': '/dbfs/ecommerce_data/checkpoints/'
 }
 
 for path in CONFIG.values():
