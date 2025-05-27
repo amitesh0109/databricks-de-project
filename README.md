@@ -1,113 +1,76 @@
-# Databricks Data Engineering Projects
+# E-commerce Data Pipeline
 
-A collection of end-to-end data engineering projects demonstrating enterprise-grade data pipeline implementation using Databricks, Delta Lake, and medallion architecture.
-
-## 🎯 Portfolio Overview
-
-This repository showcases practical data engineering skills through real-world project implementations, perfect for demonstrating expertise to potential employers and building hands-on experience with modern data platforms.
-
----
-
-## 📈 E-commerce Data Pipeline
-
-A streamlined data engineering project demonstrating medallion architecture implementation using Databricks, Delta Lake, and PySpark for e-commerce analytics.
-
-## 🎯 Project Overview
-
-This project builds an end-to-end data pipeline that processes e-commerce data through Bronze → Silver → Gold layers, demonstrating real-world data engineering practices and delivering business-ready analytics.
+End-to-end data engineering pipeline demonstrating medallion architecture with Databricks and Delta Lake.
 
 ## 🏗️ Architecture
 
 ```
-E-commerce CSV Data → Bronze Layer → Silver Layer → Gold Layer → Business Dashboard
-     (Raw)              (Ingested)    (Cleaned)     (Analytics)    (Insights)
+CSV Data → Bronze Layer → Silver Layer → Gold Layer → Dashboard
+(Raw)       (Ingested)    (Cleaned)     (Analytics)   (Business)
 ```
-
-**Medallion Architecture:**
-- **Bronze**: Raw data ingestion with basic validation
-- **Silver**: Data cleansing, joins, and business rules
-- **Gold**: Aggregated metrics and KPIs for analytics
 
 ## 📊 Dataset
 
-Realistic e-commerce data including:
 - **500 customers** with segments and demographics
-- **100 products** across 5 categories with pricing
-- **1,000 orders** with various statuses and amounts
-- **2,000+ order items** with product details
-
-## 🛠️ Technology Stack
-
-- **Platform**: Databricks
-- **Processing**: Apache Spark (PySpark)
-- **Storage**: Delta Lake with ACID transactions
-- **Languages**: Python, SQL
-- **Architecture**: Medallion (Bronze/Silver/Gold)
-- **Analytics**: Databricks SQL
+- **100 products** across 5 categories
+- **1,000 orders** with realistic business patterns
+- **2,000+ order items** with pricing and discounts
 
 ## 🚀 Quick Start
 
 ### Prerequisites
-- Databricks workspace (Community Edition works)
-- Basic knowledge of Python and SQL
+- Databricks workspace
+- Cluster with DBR 12.0+ 
 
-### Setup
-1. **Clone repository**
-   ```bash
-   git clone https://github.com/yourusername/databricks-de-projects.git
-   cd databricks-de-projects
-   ```
+### Execution Order
+```python
+# Run notebooks in sequence:
+%run ./notebooks/01_data_generation      # ~2 min
+%run ./notebooks/02_bronze_ingestion     # ~3 min  
+%run ./notebooks/03_silver_processing    # ~2 min
+%run ./notebooks/04_gold_analytics       # ~2 min
+```
 
-2. **Import to Databricks**
-   - Upload notebooks to your Databricks workspace
-   - Create a cluster with latest runtime
+### View Results
+```sql
+-- Open Databricks SQL:
+%run ./notebooks/05_dashboard_queries
+```
 
-3. **Run pipeline**
-   ```python
-   # Execute notebooks in order:
-   %run ./01_data_generation      # Generate sample data
-   %run ./02_bronze_ingestion     # Raw data ingestion  
-   %run ./03_silver_processing    # Data cleaning
-   %run ./04_gold_analytics       # Business metrics
-   ```
-
-4. **View results**
-   ```sql
-   -- Open Databricks SQL and run:
-   %run ./05_dashboard_queries
-   ```
-
-## 📁 Project Structure
+## 📁 Files
 
 ```
-databricks-de-projects/
-├── ecommerce-pipeline/
-│   ├── notebooks/
-│   │   ├── 01_data_generation.py       # Generate sample e-commerce data
-│   │   ├── 02_bronze_ingestion.py      # Raw data to Delta Lake
-│   │   ├── 03_silver_processing.py     # Data cleaning & joins
-│   │   ├── 04_gold_analytics.py        # Business metrics
-│   │   └── 05_dashboard_queries.sql    # Dashboard queries
-│   └── README.md
-├── earthquake-pipeline/               # Future project
-├── financial-data-platform/          # Future project
-└── README.md                         # Portfolio overview
+ecommerce-pipeline/
+├── notebooks/
+│   ├── 01_data_generation.py       # Generate sample data
+│   ├── 02_bronze_ingestion.py      # Raw data ingestion
+│   ├── 03_silver_processing.py     # Data cleaning
+│   ├── 04_gold_analytics.py        # Business metrics
+│   └── 05_dashboard_queries.sql    # Dashboard queries
+└── README.md
 ```
 
 ## 💼 Business Value
 
-### Key Metrics Delivered
-- **Revenue analytics** by month, customer segment, product category
-- **Customer segmentation** (VIP, Premium, Standard, Basic tiers)
-- **Product performance** with sales and profitability insights
-- **Executive KPIs** for real-time business monitoring
+- **Customer Segmentation**: VIP, Premium, Standard, Basic tiers
+- **Revenue Analytics**: Monthly trends and performance
+- **Product Performance**: Category-wise sales analysis
+- **Executive KPIs**: Real-time business metrics
 
-## 📈 Sample Results
+## 🛠️ Technical Skills
 
-| Metric | Value |
-|--------|-------|
-| **Total Revenue** | $245,678 |
-| **Total Orders** | 1,000 |
-| **Active Customers** | 425 |
-| **Avg Order Value** | $245.68 |
-| **Data Quality Score** | 99.8% |
+- **PySpark**: Data transformations and processing
+- **Delta Lake**: ACID transactions and optimization
+- **Medallion Architecture**: Bronze/Silver/Gold layers
+- **Performance Tuning**: Partitioning and Z-ordering
+- **Data Quality**: Validation and monitoring
+
+## 📈 Results
+
+| Layer | Records | Purpose |
+|-------|---------|---------|
+| Bronze | 2,100+ | Raw data ingestion |
+| Silver | 1,900+ | Cleaned and joined |
+| Gold | 50+ | Aggregated metrics |
+
+**Total Runtime**: ~10 minutes
