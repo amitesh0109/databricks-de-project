@@ -171,7 +171,7 @@ print(f"Generated {len(order_items_df)} order items")
 # COMMAND ----------
 
 # Save as CSV files
-base_path = "/dbfs/ecommerce_data/raw/"
+base_path = "abfss://bronze@<your-storage-account>.dfs.core.windows.net/raw/"
 dbutils.fs.mkdirs(base_path)
 
 def save_as_csv(pandas_df, filename):
