@@ -13,9 +13,9 @@ print("Starting Bronze Layer...")
 
 # Setup paths and database
 CONFIG = {
-    'source_path': '/dbfs/ecommerce_data/raw/',
-    'bronze_path': '/dbfs/ecommerce_data/bronze/',
-    'checkpoint_path': '/dbfs/ecommerce_data/checkpoints/'
+    'source_path': 'abfss://bronze@<your-storage-account>.dfs.core.windows.net/raw/',
+    'bronze_path': 'abfss://bronze@<your-storage-account>.dfs.core.windows.net/delta/',
+    'checkpoint_path': 'abfss://bronze@<your-storage-account>.dfs.core.windows.net/checkpoints/'
 }
 
 for path in CONFIG.values():
