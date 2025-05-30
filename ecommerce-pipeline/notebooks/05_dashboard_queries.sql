@@ -1,13 +1,4 @@
 -- Databricks notebook source
--- MAGIC %md
--- MAGIC # Business Dashboard - Analytics Queries
-
--- COMMAND ----------
-
--- MAGIC %md
--- MAGIC ## Executive Summary Dashboard
-
--- COMMAND ----------
 
 -- Executive KPIs Overview
 SELECT 
@@ -21,13 +12,6 @@ SELECT
 FROM ecommerce_gold.executive_kpis
 ORDER BY period
 
--- COMMAND ----------
-
--- MAGIC %md
--- MAGIC ## Sales Performance
-
--- COMMAND ----------
-
 -- Monthly Sales Trend (Last 6 Months)
 SELECT 
     month_year,
@@ -39,8 +23,6 @@ FROM ecommerce_gold.monthly_trends
 ORDER BY month_year DESC
 LIMIT 6
 
--- COMMAND ----------
-
 -- Sales by Status and Revenue Category
 SELECT 
     status,
@@ -51,12 +33,6 @@ FROM ecommerce_gold.sales_dashboard
 GROUP BY status
 ORDER BY total_revenue DESC
 
--- COMMAND ----------
-
--- MAGIC %md
--- MAGIC ## Customer Analytics
-
--- COMMAND ----------
 
 -- Customer Segmentation Summary
 SELECT 
@@ -70,8 +46,6 @@ FROM ecommerce_gold.customer_segments
 GROUP BY customer_tier, recency_status
 ORDER BY revenue DESC
 
--- COMMAND ----------
-
 -- Top Customer Segments by Value
 SELECT 
     CONCAT(customer_tier, ' - ', recency_status) as segment,
@@ -83,8 +57,6 @@ WHERE customer_count > 5
 ORDER BY total_revenue DESC
 LIMIT 10
 
--- COMMAND ----------
-
 -- Customer Distribution by Country and Segment
 SELECT 
     country,
@@ -94,13 +66,6 @@ SELECT
 FROM ecommerce_gold.customer_segments
 GROUP BY country, segment
 ORDER BY revenue DESC
-
--- COMMAND ----------
-
--- MAGIC %md
--- MAGIC ## Product Performance
-
--- COMMAND ----------
 
 -- Product Category Performance
 SELECT 
@@ -114,7 +79,6 @@ SELECT
 FROM ecommerce_gold.product_performance
 ORDER BY category_revenue DESC
 
--- COMMAND ----------
 
 -- Price Category Analysis
 SELECT 
@@ -127,8 +91,6 @@ FROM ecommerce_gold.product_performance
 GROUP BY price_category
 ORDER BY total_revenue DESC
 
--- COMMAND ----------
-
 -- Top Performing Categories by Profit
 SELECT 
     category,
@@ -138,13 +100,6 @@ SELECT
 FROM ecommerce_gold.product_performance
 WHERE category_profit > 0
 ORDER BY category_profit DESC
-
--- COMMAND ----------
-
--- MAGIC %md
--- MAGIC ## Business Insights
-
--- COMMAND ----------
 
 -- Revenue Growth Analysis
 WITH monthly_growth AS (
@@ -163,7 +118,6 @@ FROM monthly_growth
 WHERE prev_month_revenue IS NOT NULL
 ORDER BY month_year DESC
 
--- COMMAND ----------
 
 -- Customer Lifetime Value Distribution
 SELECT 
@@ -180,8 +134,6 @@ FROM ecommerce_gold.customer_segments
 GROUP BY 1
 ORDER BY avg_clv DESC
 
--- COMMAND ----------
-
 -- Order Completion Analysis by Month
 SELECT 
     month_year,
@@ -191,13 +143,6 @@ SELECT
 FROM ecommerce_gold.sales_dashboard
 GROUP BY month_year
 ORDER BY month_year DESC
-
--- COMMAND ----------
-
--- MAGIC %md
--- MAGIC ## Performance Summary
-
--- COMMAND ----------
 
 -- Overall Business Health Check
 SELECT 
